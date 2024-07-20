@@ -1,16 +1,17 @@
 <div class="container-fluid bg-white rounded p-5">
   <!-- Filtro -->
-  <div class="row bg-dark p-3 shadow-lg border rounded">
+  <div class="row bg-dark p-3 shadow-lg border rounded mb-5">
     <div class="col-12">
       <form id="filter-form" (ngSubmit)="onFilter()">
         <div class="row mb-3">
           <div class="col-md-4">
             <label for="name" class="form-label text-white">Nombre</label>
-            <input type="text" class="form-control" id="name" placeholder="Nombre del personaje">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Nombre del personaje"
+              [(ngModel)]="filter.name">
           </div>
           <div class="col-md-4">
             <label for="status" class="form-label text-white">Estado</label>
-            <select class="form-select" id="status">
+            <select class="form-select" id="status" name="status" [(ngModel)]="filter.status">
               <option value="">Todos</option>
               <option value="alive">Vivo</option>
               <option value="dead">Muerto</option>
@@ -19,13 +20,14 @@
           </div>
           <div class="col-md-4">
             <label for="species" class="form-label text-white">Especie</label>
-            <input type="text" class="form-control" id="species" placeholder="Especie del personaje">
+            <input type="text" class="form-control" id="species" name="species" placeholder="Especie del personaje"
+              [(ngModel)]="filter.species">
           </div>
         </div>
         <div class="row mb-3">
           <div class="col-md-4">
             <label for="gender" class="form-label text-white">Género</label>
-            <select class="form-select" id="gender">
+            <select class="form-select" id="gender" name="gender" [(ngModel)]="filter.gender">
               <option value="">Todos</option>
               <option value="male">Masculino</option>
               <option value="female">Femenino</option>
@@ -33,22 +35,23 @@
               <option value="unknown">Desconocido</option>
             </select>
           </div>
-          <div class="col-md-4">
+          <!-- <div class="col-md-4">
             <label for="origin" class="form-label text-white">Origen</label>
-            <input type="text" class="form-control" id="origin" placeholder="Origen del personaje">
-          </div>
+            <input type="text" class="form-control" id="origin" name="origin" placeholder="Origen del personaje"
+              [(ngModel)]="filter.origin">
+          </div> -->
           <div class="col-md-4 d-flex align-items-end">
             <button type="submit" class="btn btn-primary w-100">Aplicar Filtros</button>
           </div>
         </div>
       </form>
+
     </div>
   </div>
-</div>
 
-<div class="container-fluid mt-4">
   <div *ngIf="characters.length > 0" class="row">
-    <div *ngFor="let character of characters;" class="col-lg-2 col-md-3 col-sm-4 col-xs-6 mb-5 d-flex justify-content-center">
+    <div *ngFor="let character of characters;"
+      class="col-lg-2 col-md-3 col-sm-4 col-xs-6 mb-5 d-flex justify-content-center">
       <div class="card shadow-lg">
         <img [src]="character.image" class="card-img-top" alt="{{ character.name }}">
         <div class="card-body">
@@ -71,5 +74,9 @@
       </div>
     </div>
   </div>
-
 </div>
+
+<!-- <div class="container-fluid mt-4">
+
+
+</div> -->

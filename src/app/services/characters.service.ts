@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { Character } from '../interfaces/character.interface';
+import { Filter } from '../interfaces/filter-character.interface';
 
 @Injectable({providedIn: 'root'})
 export class CharactersService {
@@ -11,13 +12,37 @@ export class CharactersService {
   constructor( private http: HttpClient ) { }
 
 
-  getCharacter(): Observable<Character[]> {
-    return this.http.get<{ results: Character[] }>( this.basicUrl )
-    .pipe(
-      map( respose => {
-        console.log( 'results: ', respose);
-        return respose.results;
-      }) // Obtener solo los datos dentro de "results" en la peticion
-    );
+  getCharacters(filter?: Filter): Observable<Character[]> {
+    let params = new HttpParams();
+
+    if (filter) {
+      if (filter.name) {
+        params = params.append('name', filter.name);
+      }
+      if (filter.status) {
+        params = params.append('status', filter.status);
+      }
+      if (filter.species) {
+        params = params.append('species', filter.species);
+      }
+      if (filter.gender) {
+        params = params.append('gender', filter.gender);
+      }
+      // if (filter.origin) {
+      //   params = params.append('origin', filter.origin);
+      // }
+    }
+
+    return this.http.get<{ results: Character[] }>(this.basicUrl, { params })
+      .pipe(
+        map(response => {
+          console.log('results: ', response);
+          return response.results;
+        }), // Obtener solo los datos dentro de "results" en la peticion
+        catchError( error => {
+          console.error('Error fetching characters:', error);
+          return of([]) // Retorna una lista vacía en caso de error
+        })
+      );
   }
 }

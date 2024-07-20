@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { CharactersService } from '../../services/characters.service';
 import { Character } from '../../interfaces/character.interface';
+import { Filter } from '../../interfaces/filter-character.interface';
 
 @Component({
   selector: 'home-page',
@@ -11,24 +12,27 @@ import { Character } from '../../interfaces/character.interface';
 export class HomePageComponent implements OnInit {
 
   public characters: Character[] = [];
+  public filter: Filter = { name: '', status: '', species: '', gender: ''};
 
-  constructor( private charactersService: CharactersService ){}
+  constructor(private charactersService: CharactersService) { }
 
   ngOnInit(): void {
     this.loadCharacters();
   }
 
   loadCharacters(): void {
-    this.charactersService.getCharacter()
-      .subscribe(( data: Character[] ) => {
+    this.charactersService.getCharacters()
+      .subscribe((data: Character[]) => {
         this.characters = data;
         console.log('Lista de personajes: ', this.characters);
       });
   }
 
-  onFilter(){
-
+  onFilter(): void {
+    this.charactersService.getCharacters(this.filter)
+      .subscribe((data: Character[]) => {
+        console.log('Lista de personajes (filtrados): ', this.characters);
+        this.characters = data;
+      })
   }
-
-
 }
