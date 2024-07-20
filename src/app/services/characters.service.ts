@@ -45,4 +45,8 @@ export class CharactersService {
         })
       );
   }
+
+  getCharacterById( id: number ): Observable<Character> {
+    return this.http.get<Character>(`${ this.basicUrl }/${ id }`);
+  }
 }

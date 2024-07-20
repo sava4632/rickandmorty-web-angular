@@ -1,0 +1,28 @@
+<div *ngIf="character" class="container mt-4">
+  <div class="card mb-3">
+    <!-- Encabezado con la imagen del personaje -->
+    <img [src]="character.image" class="character-img card-img-top rounded-top" alt="{{ character.name }}">
+
+    <div class="card-body">
+      <!-- Nombre del personaje -->
+      <h2 class="card-title">{{ character.name }}</h2>
+
+      <!-- Información del personaje organizada en una lista -->
+      <ul class="list-group list-group-flush rounded">
+        <li class="list-group-item"><strong>Estado:</strong> {{ character.status }}</li>
+        <li class="list-group-item"><strong>Especie:</strong> {{ character.species }}</li>
+        <li class="list-group-item"><strong>Tipo:</strong> {{ character.type || 'No disponible' }}</li>
+        <li class="list-group-item"><strong>Género:</strong> {{ character.gender }}</li>
+        <li class="list-group-item"><strong>Origen:</strong> {{ character.origin.name }}</li>
+        <li class="list-group-item"><strong>Ubicación:</strong> {{ character.location.name }}</li>
+        <li class="list-group-item"><strong>Creado el:</strong> {{ character.created | date:'longDate' }}</li>
+        <li class="list-group-item">
+          <strong>Episodes:</strong>
+          <ul>
+            <li *ngFor="let episode of character.episode"><a href="">{{ episode }}</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

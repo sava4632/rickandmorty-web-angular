@@ -1,0 +1,22 @@
+.character-img {
+  height: 300px;
+  object-fit: cover; /* Ajusta la imagen para cubrir el área del contenedor sin deformarse */
+  width: 100%; /* Asegura que la imagen ocupa el 100% del ancho del contenedor */
+}
+
+.card-body {
+  background-color: #f8f9fa;
+}
+
+.list-group-item {
+  background-color: #ffffff;
+}
+
+.card-title {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.list-group-item strong {
+  font-weight: 600;
+}

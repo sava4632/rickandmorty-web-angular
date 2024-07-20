@@ -1,0 +1,10 @@
+<div class="card shadow-lg" (click)="goToDetails(character.id)">
+  <img [src]="character.image" class="card-img-top" alt="{{ character.name }}">
+  <div class="card-body">
+    <h5 class="card-title">{{ character.name }}</h5>
+    <p class="card-text"><strong>Estado:</strong> {{ character.status }} </p>
+    <p class="card-text"><strong>Especie:</strong> {{ character.species }}</p>
+    <p class="card-text"><strong>Género:</strong> {{ character.gender }}</p>
+    <p class="card-text"><strong>Origen:</strong> {{ character.origin.name }} </p>
+  </div>
+</div>

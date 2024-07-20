@@ -1,0 +1,9 @@
+.card {
+  max-width: 18em !important;
+  height: 33em !important;
+  cursor: pointer !important;
+}
+
+.card:hover {
+  border: 4px solid orange;
+}
