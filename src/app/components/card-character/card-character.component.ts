@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 
 import { Character } from '../../interfaces/character.interface';
 
-
 @Component({
   selector: 'card-character',
   templateUrl: './card-character.component.html',
