@@ -9,6 +9,7 @@ import { Character } from '../../interfaces/character.interface';
   styleUrl: './card-character.component.css'
 })
 export class CardCharacterComponent {
+
   @Input()
   public character!: Character;
 
@@ -16,5 +17,10 @@ export class CardCharacterComponent {
 
   goToDetails( characterId: number ): void{
     this.router.navigate(['/character', characterId]);
+  }
+
+  goToLocation(locationUrl: string) {
+    const locationId = locationUrl.split('/').pop();
+    if(locationId) this.router.navigate(['/location', locationId])
   }
 }

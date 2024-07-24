@@ -23,13 +23,13 @@ export class HomePageComponent implements OnInit {
     this.loadAllCharacters();
   }
 
-  // loadCharacters(page: number): void {
-  //   this.charactersService.getCharacters(this.filter, page)
-  //     .subscribe( data => {
-  //       this.characters = data.characters;
-  //       this.info = data.info;
-  //     });
-  // }
+  loadCharacters(page: number): void {
+    this.charactersService.getCharacters(this.filter, page)
+      .subscribe( data => {
+        this.characters = data.characters;
+        this.info = data.info;
+      });
+  }
 
   onFilter(): void {
     this.currentPage = 1;
@@ -40,6 +40,21 @@ export class HomePageComponent implements OnInit {
   onPageChange(page: number): void {
     this.currentPage = page;
     // this.loadCharacters(page);
+
+    // enviar al usuario al principio de la pagina
+    this.scrollToTop();
+  }
+
+  scrollToTop(): void {
+    const scrollDuration = 600; // Duración de la animación en milisegundos
+    const scrollStep = -window.scrollY / (scrollDuration / 15);
+    const scrollInterval = setInterval(() => {
+      if (window.scrollY !== 0) {
+        window.scrollBy(0, scrollStep);
+      } else {
+        clearInterval(scrollInterval);
+      }
+    }, 15);
   }
 
   loadAllCharacters(): void {

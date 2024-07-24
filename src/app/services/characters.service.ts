@@ -4,6 +4,7 @@ import { catchError, concatMap, map, Observable, of } from 'rxjs';
 import { Character } from '../interfaces/character.interface';
 import { Filter } from '../interfaces/filter-character.interface';
 import { Info } from '../interfaces/pagination-info.interface';
+import { Location } from '../interfaces/location.interface';
 
 @Injectable({ providedIn: 'root' })
 export class CharactersService {
@@ -74,6 +75,11 @@ export class CharactersService {
   private getNextPage(nextUrl: string): number {
     const url = new URL(nextUrl);
     return parseInt(url.searchParams.get('page') || '1', 10);
+  }
+
+  getLocation( id: number ): Observable<Location> {
+    const url = 'https://rickandmortyapi.com/api/location';
+    return this.http.get<Location>( `${url}/${id}` );
   }
 
 }

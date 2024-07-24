@@ -12,6 +12,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { CardCharacterComponent } from './components/card-character/card-character.component';
 import { CharacterDetailPageComponent } from './pages/character-detail-page/character-detail-page.component';
+import { LocationDetailPageComponent } from './pages/location-detail-page/location-detail-page.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { CharacterDetailPageComponent } from './pages/character-detail-page/char
     SidebarComponent,
     NavbarComponent,
     CardCharacterComponent,
-    CharacterDetailPageComponent
+    CharacterDetailPageComponent,
+    LocationDetailPageComponent
   ],
   imports: [
     BrowserModule,

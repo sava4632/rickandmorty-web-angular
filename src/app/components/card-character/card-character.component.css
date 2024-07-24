@@ -1,6 +1,7 @@
 .card {
   max-width: 18em !important;
-  height: 33em !important;
+  /* width: 15em !important; */
+  height: 35em !important;
   cursor: pointer !important;
 }
 

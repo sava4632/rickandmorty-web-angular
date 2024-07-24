@@ -1,0 +1,23 @@
+<div *ngIf="location" class="container mt-4">
+  <div class="card mb-3">
+    <div class="card-body">
+      <!-- Nombre de la ubicación -->
+      <h2 class="card-title">{{ location.name }}</h2>
+
+      <!-- Información de la ubicación organizada en una lista -->
+      <ul class="list-group list-group-flush rounded">
+        <li class="list-group-item"><strong>Tipo:</strong> {{ location.type }}</li>
+        <li class="list-group-item"><strong>Dimensión:</strong> {{ location.dimension || 'No disponible' }}</li>
+        <li class="list-group-item"><strong>Creado el:</strong> {{ location.created | date:'longDate' }}</li>
+        <li class="list-group-item">
+          <strong>Residentes:</strong>
+          <ul>
+            <li *ngFor="let resident of location.residents">
+              <a [href]="resident">{{ resident }}</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

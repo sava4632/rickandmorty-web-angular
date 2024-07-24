@@ -13,8 +13,8 @@
         <li class="list-group-item"><strong>Especie:</strong> {{ character.species }}</li>
         <li class="list-group-item"><strong>Tipo:</strong> {{ character.type || 'No disponible' }}</li>
         <li class="list-group-item"><strong>Género:</strong> {{ character.gender }}</li>
-        <li class="list-group-item"><strong>Origen:</strong> {{ character.origin.name }}</li>
-        <li class="list-group-item"><strong>Ubicación:</strong> {{ character.location.name }}</li>
+        <li class="list-group-item"><strong>Origen: </strong><a href="">{{ character.origin.name }} </a> </li>
+        <li class="list-group-item"><strong>Ubicación: </strong><a href="">{{ character.location.name }}</a></li>
         <li class="list-group-item"><strong>Creado el:</strong> {{ character.created | date:'longDate' }}</li>
         <li class="list-group-item">
           <strong>Episodes:</strong>

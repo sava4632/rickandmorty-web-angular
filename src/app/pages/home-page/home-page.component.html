@@ -34,14 +34,14 @@
             </select>
           </div>
           <div class="col-md-4 d-flex align-items-end">
-            <button type="submit" class="btn btn-primary w-100">Aplicar Filtros</button>
+            <button type="submit" class="btn btn-warning fw-bold w-100">Aplicar Filtros</button>
           </div>
         </div>
       </form>
     </div>
   </div>
 
-
+  <pagination-controls (pageChange)="onPageChange( currentPage = $event )" class="d-flex justify-content-center mb-4"></pagination-controls>
 
   <!-- Mostrar alerta si no hay personajes -->
   <div *ngIf="characters.length === 0" class="row">
@@ -53,11 +53,12 @@
     </div>
   </div>
 
-  <!-- Paginación -->
   <div *ngIf="characters.length > 0" class="row">
     <div *ngFor="let character of characters | paginate: { itemsPerPage: 12, currentPage: currentPage }" class="col-lg-2 col-md-3 col-sm-4 col-xs-6 mb-5 d-flex justify-content-center">
       <card-character [character]="character"></card-character>
     </div>
   </div>
+
+  <!-- Paginación -->
   <pagination-controls (pageChange)="onPageChange( currentPage = $event )" class="d-flex justify-content-center"></pagination-controls>
 </div>
