@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, concatMap, map, Observable, of } from 'rxjs';
+import { catchError, concatMap, forkJoin, map, Observable, of } from 'rxjs';
 import { Character } from '../interfaces/character.interface';
 import { Filter } from '../interfaces/filter-character.interface';
 import { Info } from '../interfaces/pagination-info.interface';
@@ -8,6 +8,7 @@ import { Location } from '../interfaces/location.interface';
 
 @Injectable({ providedIn: 'root' })
 export class CharactersService {
+
   public basicUrl: string = 'https://rickandmortyapi.com/api/character';
 
   constructor(private http: HttpClient) { }
@@ -80,6 +81,11 @@ export class CharactersService {
   getLocation( id: number ): Observable<Location> {
     const url = 'https://rickandmortyapi.com/api/location';
     return this.http.get<Location>( `${url}/${id}` );
+  }
+
+  getCharactersByUrl( residentsUrls: string[] ): Observable<Character[]> {
+    const requests: Observable<Character>[] = residentsUrls.map(url => this.http.get<Character>(url));
+    return forkJoin(requests);
   }
 
 }

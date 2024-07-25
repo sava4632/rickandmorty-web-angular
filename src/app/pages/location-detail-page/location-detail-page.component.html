@@ -12,8 +12,8 @@
         <li class="list-group-item">
           <strong>Residentes:</strong>
           <ul>
-            <li *ngFor="let resident of location.residents">
-              <a [href]="resident">{{ resident }}</a>
+            <li *ngFor="let resident of residents">
+              <a class="text-primary" (click)="goToCharacter( resident.id )">{{ resident.name }}</a>
             </li>
           </ul>
         </li>

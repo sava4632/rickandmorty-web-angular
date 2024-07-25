@@ -20,3 +20,8 @@
 .list-group-item strong {
   font-weight: 600 !important;
 }
+
+.text-primary:hover {
+  color: orange !important;
+  cursor: pointer;
+}

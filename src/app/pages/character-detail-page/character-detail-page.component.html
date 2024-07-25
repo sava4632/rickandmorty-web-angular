@@ -13,8 +13,24 @@
         <li class="list-group-item"><strong>Especie:</strong> {{ character.species }}</li>
         <li class="list-group-item"><strong>Tipo:</strong> {{ character.type || 'No disponible' }}</li>
         <li class="list-group-item"><strong>Género:</strong> {{ character.gender }}</li>
-        <li class="list-group-item"><strong>Origen: </strong><a href="">{{ character.origin.name }} </a> </li>
-        <li class="list-group-item"><strong>Ubicación: </strong><a href="">{{ character.location.name }}</a></li>
+        <li class="list-group-item">
+          <strong>Origen: </strong>
+          <ng-container *ngIf="character.origin.name !== 'unknown'; else unknownOrigin">
+            <a class="text-primary" (click)="goToLocation(character.origin.url)">{{ character.origin.name }}</a>
+          </ng-container>
+          <ng-template #unknownOrigin>
+            <span>{{ character.origin.name }}</span>
+          </ng-template>
+        </li>
+        <li class="list-group-item">
+          <strong>Ubicación: </strong>
+          <ng-container *ngIf="character.location.name !== 'unknown'; else unknownLocation">
+            <a class="text-primary" (click)="goToLocation(character.location.url)">{{ character.location.name }}</a>
+          </ng-container>
+          <ng-template #unknownLocation>
+            <span>{{ character.location.name }}</span>
+          </ng-template>
+        </li>
         <li class="list-group-item"><strong>Creado el:</strong> {{ character.created | date:'longDate' }}</li>
         <li class="list-group-item">
           <strong>Episodes:</strong>

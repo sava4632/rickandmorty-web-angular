@@ -1,0 +1,4 @@
+.text-primary:hover {
+  color: orange !important;
+  cursor: pointer;
+}

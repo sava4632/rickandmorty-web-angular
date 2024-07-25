@@ -8,3 +8,7 @@
 .card:hover {
   border: 4px solid orange;
 }
+
+.text-primary:hover {
+  color: orange !important;
+}

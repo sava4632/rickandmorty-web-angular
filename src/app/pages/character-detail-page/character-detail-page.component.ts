@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Character } from '../../interfaces/character.interface';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CharactersService } from '../../services/characters.service';
 
 @Component({
@@ -13,6 +13,7 @@ export class CharacterDetailPageComponent implements OnInit {
   public character!: Character;
 
   constructor(private route: ActivatedRoute,
+    private router: Router,
     private charactersService: CharactersService) { }
 
   ngOnInit(): void {
@@ -27,5 +28,10 @@ export class CharacterDetailPageComponent implements OnInit {
       .subscribe( data => {
         this.character = data;
       } )
+  }
+
+  goToLocation(url: string) {
+    const locationId = url.split('/').pop();
+    if( locationId ) this.router.navigate(['/location', locationId]);
   }
 }

@@ -6,6 +6,14 @@
     <p class="card-text"><strong>Estado:</strong> {{ character.status }} </p>
     <p class="card-text"><strong>Especie:</strong> {{ character.species }}</p>
     <p class="card-text"><strong>Género:</strong> {{ character.gender }}</p>
-    <p class="card-text"><strong>Origen:</strong> <a class="text-primary" (click)="goToLocation(character.origin.url)"> {{ character.origin.name }} </a></p>
+    <p class="card-text">
+      <strong>Origen: </strong>
+      <ng-container *ngIf="character.origin.name !== 'unknown'; else unknownOrigin">
+        <a class="text-primary" (click)="goToLocation(character.origin.url)"> {{ character.origin.name }} </a>
+      </ng-container>
+      <ng-template #unknownOrigin>
+        <span>{{ character.origin.name }}</span>
+      </ng-template>
+    </p>
   </div>
 </div>
