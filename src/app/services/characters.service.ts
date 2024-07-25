@@ -5,6 +5,7 @@ import { Character } from '../interfaces/character.interface';
 import { Filter } from '../interfaces/filter-character.interface';
 import { Info } from '../interfaces/pagination-info.interface';
 import { Location } from '../interfaces/location.interface';
+import { Episode } from '../interfaces/episode.interface';
 
 @Injectable({ providedIn: 'root' })
 export class CharactersService {
@@ -88,5 +89,14 @@ export class CharactersService {
     return forkJoin(requests);
   }
 
+  getEpisodeById( episodeId: number): Observable<Episode> {
+    const url = 'https://rickandmortyapi.com/api/episode';
+    return this.http.get<Episode>( `${url}/${episodeId}` );
+  }
+
+  getEpisodesByUrl( episodesUrls: string[] ): Observable<Episode[]> {
+    const requests: Observable<Episode>[] = episodesUrls.map(url => this.http.get<Episode>(url));
+    return forkJoin(requests);
+  }
 }
 

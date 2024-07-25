@@ -1,0 +1,24 @@
+<!-- src/app/pages/episode-detail-page/episode-detail-page.component.html -->
+<div *ngIf="episode" class="container mt-4">
+  <div class="card mb-3">
+    <div class="card-body">
+      <!-- Nombre del episodio -->
+      <h2 class="card-title">{{ episode.name }}</h2>
+
+      <!-- Información del episodio organizada en una lista -->
+      <ul class="list-group list-group-flush rounded">
+        <li class="list-group-item"><strong>Fecha de emisión:</strong> {{ episode.air_date }}</li>
+        <li class="list-group-item"><strong>Episodio:</strong> {{ episode.episode }}</li>
+        <li class="list-group-item"><strong>Creado el:</strong> {{ episode.created | date:'longDate' }}</li>
+        <li class="list-group-item">
+          <strong>Personajes:</strong>
+          <ul>
+            <li *ngFor="let character of characters">
+              <a class="text-primary" (click)="goToCharacter(character.id)">{{ character.name }}</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

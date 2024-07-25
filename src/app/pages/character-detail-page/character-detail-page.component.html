@@ -35,7 +35,9 @@
         <li class="list-group-item">
           <strong>Episodes:</strong>
           <ul>
-            <li *ngFor="let episode of character.episode"><a href="">{{ episode }}</a></li>
+            <li *ngFor="let episode of episodes">
+              <a class="text-primary" (click)="goToEpisode(episode.id)">{{episode.name}} - {{episode.episode}}</a>
+            </li>
           </ul>
         </li>
       </ul>

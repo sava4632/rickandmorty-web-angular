@@ -13,6 +13,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { CardCharacterComponent } from './components/card-character/card-character.component';
 import { CharacterDetailPageComponent } from './pages/character-detail-page/character-detail-page.component';
 import { LocationDetailPageComponent } from './pages/location-detail-page/location-detail-page.component';
+import { EpisodeDetailPageComponent } from './pages/episode-detail-page/episode-detail-page.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { LocationDetailPageComponent } from './pages/location-detail-page/locati
     NavbarComponent,
     CardCharacterComponent,
     CharacterDetailPageComponent,
-    LocationDetailPageComponent
+    LocationDetailPageComponent,
+    EpisodeDetailPageComponent
   ],
   imports: [
     BrowserModule,
